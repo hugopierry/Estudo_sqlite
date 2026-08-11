@@ -3,8 +3,16 @@ import sqlite3
 conexao = sqlite3.connect("meu_banco.db") # cria banco de dados
 cursor = conexao.cursor() # abre conexão
 
-nome = input("Digite o nome: ")
-email = input("Digite o email: ")
+resposta = "S"
+while resposta == "S":
+        print("\n=== INSERÇÃO DE USUÁRIOS NO BANCO DE DADOS ===")
+        nome = input("\nDigite o nome: ")
+        email = input("Digite o email: ")
+
+        resposta = input("Continuar? [S/N]: ").upper()
+       
+print("Inserções finalizadas com sucesso!")
+             
 
 comando_sql = f"INSERT INTO usuarios (nome, email) VALUES (?, ?)"
 
