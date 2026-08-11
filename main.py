@@ -1,27 +1,22 @@
 import sqlite3
 
-conexao = sqlite3.connect("meu_banco.db") # cria banco de dados
-cursor = conexao.cursor() # abre conexão
+conexao = sqlite3.connect("meu_banco.db")  # cria/abre o banco de dados
+cursor = conexao.cursor()  # cria o cursor
 
-# criar tabela
-comando_sql = """ 
-CREATE TABLE IF NOT EXISTS usuarios (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nome TEXT NOT NULL,
-    email TEXT UNIQUE NOT NULL
-)
+# Adiciona a coluna "poder" na tabela usuarios
 
+comando_sql = """
+ALTER TABLE usuarios
+DROP COLUMN poder;
 """
 
-# executa comando
+# Executa o comando
 cursor.execute(comando_sql)
 
-# salva comando
+# Salva a alteração
 conexao.commit()
 
-print("Banco de dados e tabela criados com  sucesso!")
-#fecha conexão
+print("Coluna 'poder' adicionada com sucesso!")
+
+# Fecha a conexão
 conexao.close()
-
-
-
